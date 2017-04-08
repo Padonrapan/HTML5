@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html 5 input attribute</title>
+</head>
+<body>
+    <form action="shenpan" method="get" id="name1">
+        <p><label for="textarea1">请仔细阅读相关协议</label></p>
+        <p><textarea name="textarea1" id="textarea1">许可证协议详细说明</textarea></p>
+        <p>
+            <input type="submit" value="拒绝"/>
+            <input type="submit" value="同意"  autofocus="on"/>
+        </p>
+        <p>用户名:<input type="text" name="username" autocomplete="on"/></p><!--要有属性name才能体现出autocomplete效果-->
+        <p>密码:<input type="password" name="password" autocomplete="off"/></p>
+        <p>请输入网址:<input type="url" list="datalist1"/></p>
+        <datalist id="datalist1">
+            <option value="http://www.baidu.com"/>
+            <option value="http://www.sina.com"/>
+            <option value="http://www.yahu.com"/>
+        </datalist>
+        <p>请选择要上传的文件select images:<input type="file" name="img" multiple/></p>
+        <p>请输入国家代码:<input type="text" name="code" pattern="[a-zA-Z]{3}" placeholder="请输入3个字母国家代码" title="3个字母国家代码"/></p>
+        <p>请输入电话号码:<input type="tel" name="tel" required="required"/></p>
+        <input type="image" src="icon.jpg" name="image" height="15" width="15"/>
+        <p><input type="submit" value="提交"/></p>
+    </form>
+    <p>请输入您的姓名<input type="text" form="name1" name="address1"/></p>
+</body>
+</html>
