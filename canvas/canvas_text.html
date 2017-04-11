@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas_text</title>
+    <style type="text/css">
+        #mycanvas{
+            border:1px solid #7f8288;
+            background-color: lightblue;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var canvas=document.getElementById("mycanvas");
+            var context=canvas.getContext("2d");
+            //设置实心字体
+            context.fillStyle="red";
+            context.font="italic 40px Arial";
+            context.fillText("hello world",100,100);//100,100为文本起始坐标
+
+            //设置空心字体文本
+            context.strokeStyle="red";
+            context.font="italic 40px Arial";
+            context.textAlign="right";//设置文本对齐属性，以文本起始坐标为参考点200,200；start,end,left,center,right
+            context.strokeText("hello world",200,200);
+
+            //测量文本宽度
+            var measure=context.measureText("I LOVE JAVASCRIPT");
+            context.fillStyle="red";
+            context.font="italic 40px Arial";
+            context.textAlign="left";
+            context.fillText((+measure.width+'px wide'),100,300);
+        }
+    </script>
+</head>
+<body>
+    <canvas id="mycanvas" height="800" width="600">
+        如果您的浏览器不支持，请更新浏览器版本。
+    </canvas>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas_img</title>
+    <style type="text/css">
+        #mycanvas{
+            border:1px solid #7f8288;
+            background-color:lightblue;
+        }
+    </style>
+    <script>
+        function draw(type){
+            var canvas=document.getElementById("mycanvas");
+            var context=canvas.getContext("2d");
+            context.clearRect(0,0,500,200);//清除矩形区域中的内容
+            var myimg=document.getElementById("myimg");
+            var pat=context.createPattern(myimg,type);
+            context.rect(0,0,500,200);
+            context.fillStyle=pat;
+            context.fill();
+        }
+    </script>
+</head>
+<body>
+    <p>图像的使用: </p>
+    <img src="canvas_img.jpg" id="myimg"/></br>
+    <button onclick="draw('repeat')">repeat</button>
+    <button onclick="draw('repeat-x')">repeat-x</button>
+    <button onclick="draw('repeat-y')">repeat-y</button>
+    <button onclick="draw('no-repeat')">no-repeat</button></br>
+    <canvas id="mycanvas" height="200" width="500">
+        如果您的浏览器不支持，请更新浏览器版本。
+    </canvas>
+</body>
+</html>

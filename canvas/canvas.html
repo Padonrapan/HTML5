@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+        <style type="text/css">
+            #mycanvas{
+                border:1px solid #7f8288;
+            }
+        </style>
+    <script>
+        window.onload=function() {
+            var canvas = document.getElementById("mycanvas");
+            var context = canvas.getContext("2d");
+            //绘制矩形
+            context.fillStyle = "lightblue";
+            context.fillRect(50, 40, 800,1100);
+
+            //绘制直线1
+            context.beginPath();
+            context.moveTo(100,80);
+            context.lineTo(300,80);
+            context.strokeStyle="red";
+            context.lineCap="round";
+            context.stroke();<!--stroke()方法需放置在属性之后-->
+            //绘制直线2
+            context.beginPath();
+            context.moveTo(100,130);
+            context.lineTo(300,130);
+            context.strokeStyle="red";
+            context.lineCap="square";
+            context.stroke();<!--stroke()方法需放置在属性之后-->
+            //绘制直线3
+            context.beginPath();
+            context.moveTo(100,180);
+            context.lineTo(300,180);
+            context.strokeStyle="red";
+            context.lineCap="butt";
+            context.stroke();<!--stroke()方法需放置在属性之后-->
+
+            //绘制曲线
+            context.beginPath();
+            context.moveTo(100,200);
+            context.lineTo(130,240);
+            context.arcTo(130,290,180,290,50);
+            context.lineTo(300,330);
+            context.stroke();
+            //绘制二次贝塞尔曲线
+            context.beginPath();
+            context.moveTo(100,400);
+            context.quadraticCurveTo(160,360,280,450);
+            context.stroke();
+            //绘制三次贝塞尔曲线
+            context.beginPath();
+            context.moveTo(100,500);
+            context.bezierCurveTo(180,460,250,530,300,580);
+            context.stroke();
+
+            //绘制复杂路径
+            context.beginPath();
+            context.moveTo(80,600);
+            context.lineTo(100,650);
+            context.arcTo(100,700,150,700,50);
+            context.lineTo(200,680);
+            context.quadraticCurveTo(250,730,300,680);
+            context.bezierCurveTo(350,650,400,700,450,750);
+            context.lineWidth="40";
+            context.strokeStyle="yellow";
+            context.lineJoin="bevel";//miter,round,bevel
+            context.stroke();
+
+            //绘制矩形
+            context.beginPath();
+            context.rect(400,100,200,100);//起始点x,y坐标,width,height
+            context.lineWidth="5";
+            context.stroke();
+            context.fillStyle="lightyellow";//设置填充色
+            context.fill();//需调用填充方法才能体现填充色
+
+            //绘制圆
+            context.beginPath();
+            var centerX=500;
+            var centerY=400;
+            var radius=100;
+            context.arc(centerX,centerY,radius,0,2*Math.PI,true);//false-顺时针，true-逆时针
+            context.stroke();
+            context.fillStyle="lightgreen";
+            //设置阴影
+            context.shadowColor="black";
+            context.shadowBlur="20";
+            context.shadowOffsetX="10";
+            context.shadowOffsetY="10";
+            //设置透明度
+            context.globalAlpha="0.6";
+            context.fill();//阴影设置也必须在fill()方法调用前
+
+            //绘制线性渐变
+            var  clg=context.createLinearGradient(500,600,500,700);//改变终点位置可改变渐变色方向
+            clg.addColorStop("0.3","red");
+            clg.addColorStop("0.75","yellow");
+            clg.addColorStop("1","green");
+            context.fillStyle=clg;
+            context.strokeStyle=clg;
+            context.fillRect(500,600,200,100);
+
+            //绘制线性渐变
+            var crg=context.createRadialGradient(200,900,30,200,900,60);//第一个圆x,y,radius;第二个圆x,y,radius;
+            crg.addColorStop("0.3","red");
+            crg.addColorStop("0.75","yellow");
+            crg.addColorStop("1","green");
+            context.fillStyle=crg;
+            context.strokeStyle=crg;
+            context.fillRect(100,820,200,150);
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="mycanvas" height="1200" width="900">
+        如果您的浏览器不支持，请更新浏览器版本。
+    </canvas>
+</body>
+</html>
